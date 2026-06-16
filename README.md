@@ -39,3 +39,10 @@ cp .env.example .env
 npm install
 npm run dev
 ```
+
+#### Testing accounts
+`admin@bliss,com`
+`Aa123456`
+or
+`davidho@bliss.com`
+`Aa123456`
