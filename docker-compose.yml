@@ -1,0 +1,48 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: bliss_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bliss_project
+  # ports:         only for backend to connect to db, not exposed to outside
+  #   - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    container_name: bliss_backend
+    restart: always
+    ports:
+      - '8000:8000'
+    environment:
+      DATABASE_URL: mysql://root:root@db:3306/bliss_project
+      JWT_SECRET: productionsecretd4dd1c5b7e105355044c2290107d72b4b0f31c9c5cae1d52481c27c9a454fa6e72fef46bf04df8da6c6b043a6fe55d71c8f29ce854b27109
+      PORT: 8000
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: bliss_frontend
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+      API_URL: http://bliss_backend:8000
+    depends_on:
+      - backend
+      
+volumes:
+  mysql_data:

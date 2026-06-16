@@ -1,0 +1,59 @@
+# ===== BACKEND =====
+/backend/dist
+/backend/node_modules
+/backend/build
+/backend/logs
+/backend/*.log
+/backend/npm-debug.log*
+/backend/pnpm-debug.log*
+/backend/yarn-debug.log*
+/backend/yarn-error.log*
+/backend/lerna-debug.log*
+/backend/coverage
+/backend/.nyc_output
+/backend/.temp
+/backend/.tmp
+/backend/pids
+/backend/*.pid
+/backend/*.seed
+/backend/*.pid.lock
+/backend/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Backend env
+/backend/.env
+/backend/.env.development.local
+/backend/.env.test.local
+/backend/.env.production.local
+/backend/.env.local
+
+# ===== FRONTEND =====
+/frontend/.next
+/frontend/node_modules
+/frontend/out
+/frontend/build
+/frontend/next-env.d.ts
+
+# Frontend env
+/frontend/.env
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== IDEs =====
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
